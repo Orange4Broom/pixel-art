@@ -1,0 +1,54 @@
+.remote-cursors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+
+.remote-cursor {
+  position: absolute;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: all 0.1s ease-out;
+  box-sizing: border-box;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+}
+
+.cursor-indicator {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 4px;
+    background: inherit;
+    border-radius: 50%;
+  }
+}

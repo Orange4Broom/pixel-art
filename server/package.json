@@ -1,0 +1,20 @@
+{
+  "name": "pixel-server",
+  "version": "1.0.0",
+  "description": "WebSocket server pro multiplayer pixel art editor",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "build": "echo 'No build step required for server'"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "keywords": ["websocket", "multiplayer", "pixel-art"],
+  "author": "Pixel Art Team",
+  "license": "MIT"
+}

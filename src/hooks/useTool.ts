@@ -1,0 +1,10 @@
+import { useContext } from "react";
+import { ToolContext } from "../contexts/ToolContext";
+
+export const useTool = () => {
+  const context = useContext(ToolContext);
+  if (context === undefined) {
+    throw new Error("useTool must be used within a ToolProvider");
+  }
+  return context;
+};
