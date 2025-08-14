@@ -49,23 +49,25 @@ interface MultiplayerProviderProps {
 
 // Automatická detekce server URL podle prostředí
 const getDefaultServerUrl = () => {
+  // PRIORITA 1: Environment variable (pro development i produkci)
+  if (import.meta.env.VITE_SERVER_URL) {
+    return import.meta.env.VITE_SERVER_URL;
+  }
+
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
 
-    // Pro localhost používej development server
+    // PRIORITA 2: Pro localhost bez env variable - použij local server
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return 'ws://localhost:8080';
     }
 
-    // Pro produkci - Railway automaticky poskytne VITE_SERVER_URL
-    if (import.meta.env.VITE_SERVER_URL) {
-      return import.meta.env.VITE_SERVER_URL;
-    }
-
-    // Fallback pro Railway - použijeme skutečnou URL
+    // PRIORITA 3: Fallback pro Railway produkci
     return `${protocol}//pixel-art-production.up.railway.app`;
   }
+
+  // PRIORITA 4: SSR fallback
   return 'ws://localhost:8080';
 };
 
