@@ -63,8 +63,8 @@ const getDefaultServerUrl = () => {
       return import.meta.env.VITE_SERVER_URL;
     }
 
-    // Fallback pro Railway - nahraďte YOUR-APP-NAME skutečným názvem
-    return `${protocol}//${hostname.replace(/^[^.]+/, 'YOUR-APP-NAME')}.railway.app`;
+    // Fallback pro Railway - použijeme skutečnou URL
+    return `${protocol}//pixel-art-production.up.railway.app`;
   }
   return 'ws://localhost:8080';
 };
